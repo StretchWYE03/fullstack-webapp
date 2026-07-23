@@ -19,28 +19,24 @@ const UserContext = createContext<UserContextType>({
 export function UserProvider({ children }: { children: React.ReactNode }) {
     const [role, setRole] = useState<string | null>(null);
     const [userId, setUserId] = useState<string | null>(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(isLoggedIn());
 
     useEffect(() => {
-    if (isLoggedIn()) {
-        fetchRole();
-    } else {
-        setLoading(false);
-    }
-    }, []);
-
+    if (!isLoggedIn()) return;
     const fetchRole = async () => {
-    try {
-        await apiClient.post("/users/register");
-        const response = await apiClient.get("/users/me");
-        setRole(response.data.role);
-        setUserId(response.data.user_id);
-    } catch (error) {
-        console.error("Failed to fetch role:", error);
-    } finally {
-        setLoading(false);
-    }
+        try {
+            await apiClient.post("/users/register");
+            const response = await apiClient.get("/users/me");
+            setRole(response.data.role);
+            setUserId(response.data.user_id);
+        } catch (error) {
+            console.error("Failed to fetch role:", error);
+        } finally {
+            setLoading(false);
+        }
     };
+    void fetchRole();
+    }, []);
 
     const logout = () => {
         signOut();
@@ -56,6 +52,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     );
 }
 
+// This hook intentionally shares this module's context with its provider.
+// eslint-disable-next-line react-refresh/only-export-components
 export function useUser() {
     return useContext(UserContext);
 }

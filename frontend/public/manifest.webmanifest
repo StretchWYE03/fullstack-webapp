@@ -1,0 +1,12 @@
+{
+  "name": "Level Up — Daily Self-Improvement",
+  "short_name": "Level Up",
+  "description": "A colourful self-improvement quest tracker.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffdf7",
+  "theme_color": "#223c30",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
