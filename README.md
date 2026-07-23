@@ -1,5 +1,4 @@
 # TEMPLATE FOR WEB APP CREATION
 
-Key things to remember:
-postgresql://user:password@host:5432/dbname is the format for postgres connection strings
+This repository is a template for the creation of full stack web apps. To serve as a portfolio piece while serving as a base for further development.
 
