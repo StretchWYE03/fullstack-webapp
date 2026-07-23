@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+backend/.env
+#.py[cod]
+test=env/
+.env
+test-venv/
+
+# Node
+node_modules/
+dist/
+frontend/.env
+
+# General
+.DS_Store
+*.log
+

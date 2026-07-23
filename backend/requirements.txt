@@ -1,0 +1,15 @@
+fastapi
+pandas
+numpy
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+alembic
+pydantic
+pydantic-settings
+python-jose[cryptography]
+httpx
+python-dotenv
+pytest
+PyJWT[crypto]
+cryptography
